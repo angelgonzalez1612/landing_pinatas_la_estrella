@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+:root {
+  --crema:      #fdf3df;
+  --crema-2:    #f8e9c4;
+  --guinda:     #a8231f;
+  --guinda-2:   #811814;
+  --amarillo:   #f4b81b;
+  --verde:      #2f7a3a;
+  --rosa:       #e2357a;
+  --azul:       #1f7aa8;
+  --tinta:      #2a1a10;
+  --tinta-soft: #5e4a36;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--crema);
+  color: var(--tinta);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.display { font-family: 'Bagel Fat One', serif; font-weight: 400; letter-spacing: -.02em; line-height: .95; }
+.script   { font-family: 'Caveat', cursive; font-weight: 700; }
+.serif    { font-family: 'Caprasimo', serif; font-weight: 400; letter-spacing: -.01em; }
+
+a { color: inherit; }
+button { font-family: inherit; cursor: pointer; border: 0; background: none; color: inherit; padding: 0; }
+
+/* ── Papel picado band ─────────────────────────────── */
+.picado {
+  height: 42px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' preserveAspectRatio='none'><defs><pattern id='p' x='0' y='0' width='120' height='60' patternUnits='userSpaceOnUse'><rect width='120' height='60' fill='%23a8231f'/><path d='M0 60 L20 35 L40 60 Z M40 60 L60 35 L80 60 Z M80 60 L100 35 L120 60 Z' fill='%23fdf3df'/><circle cx='20' cy='20' r='4' fill='%23fdf3df'/><circle cx='60' cy='20' r='4' fill='%23fdf3df'/><circle cx='100' cy='20' r='4' fill='%23fdf3df'/><rect x='12' y='10' width='16' height='3' fill='%23fdf3df'/><rect x='52' y='10' width='16' height='3' fill='%23fdf3df'/><rect x='92' y='10' width='16' height='3' fill='%23fdf3df'/></pattern></defs><rect width='120' height='60' fill='url(%23p)'/></svg>");
+  background-size: 140px 42px;
+  background-repeat: repeat-x;
+}
+.picado.verde {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' preserveAspectRatio='none'><defs><pattern id='p' x='0' y='0' width='120' height='60' patternUnits='userSpaceOnUse'><rect width='120' height='60' fill='%232f7a3a'/><path d='M0 60 L20 35 L40 60 Z M40 60 L60 35 L80 60 Z M80 60 L100 35 L120 60 Z' fill='%23fdf3df'/><circle cx='20' cy='20' r='4' fill='%23fdf3df'/><circle cx='60' cy='20' r='4' fill='%23fdf3df'/><circle cx='100' cy='20' r='4' fill='%23fdf3df'/><rect x='12' y='10' width='16' height='3' fill='%23fdf3df'/><rect x='52' y='10' width='16' height='3' fill='%23fdf3df'/><rect x='92' y='10' width='16' height='3' fill='%23fdf3df'/></pattern></defs><rect width='120' height='60' fill='url(%23p)'/></svg>");
+}
+.picado.rosa {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60' preserveAspectRatio='none'><defs><pattern id='p' x='0' y='0' width='120' height='60' patternUnits='userSpaceOnUse'><rect width='120' height='60' fill='%23e2357a'/><path d='M0 60 L20 35 L40 60 Z M40 60 L60 35 L80 60 Z M80 60 L100 35 L120 60 Z' fill='%23fdf3df'/><circle cx='20' cy='20' r='4' fill='%23fdf3df'/><circle cx='60' cy='20' r='4' fill='%23fdf3df'/><circle cx='100' cy='20' r='4' fill='%23fdf3df'/><rect x='12' y='10' width='16' height='3' fill='%23fdf3df'/><rect x='52' y='10' width='16' height='3' fill='%23fdf3df'/><rect x='92' y='10' width='16' height='3' fill='%23fdf3df'/></pattern></defs><rect width='120' height='60' fill='url(%23p)'/></svg>");
+}
+
+/* ── Animaciones ─────────────────────────────────── */
+@keyframes swing {
+  0%, 100% { transform: translateX(-50%) rotate(-7deg); }
+  50%       { transform: translateX(-50%) rotate(7deg); }
+}
+@keyframes bob {
+  0%   { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-3px) scale(1.01); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(6deg) translateY(0); }
+  50%       { transform: rotate(-3deg) translateY(-5px); }
+}
+@keyframes fall {
+  0%   { transform: translateY(-40px) rotate(0deg); opacity: 0; }
+  8%   { opacity: .95; }
+  100% { transform: translateY(900px) rotate(540deg); opacity: .4; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

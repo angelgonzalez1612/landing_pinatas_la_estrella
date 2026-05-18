@@ -1,17 +1,668 @@
 ---
+import '../styles/global.css';
+import Pinata from '../components/Pinata.astro';
 
+const picos = [
+  {
+    n: 5, badge: 'Clásica corta', nombre: 'Estrella de 5 picos',
+    desc: 'Silueta sencilla, picos largos y pronunciados. Se ve increíble desde abajo. Buena opción para niños chicos.',
+    bg: '#fff7e0', pico: '#a8231f', forrado: '#f4b81b', mechudos: '#a8231f',
+  },
+  {
+    n: 7, badge: 'La más pedida', nombre: 'Estrella de 7 picos',
+    desc: 'La tradicional mexicana — la que representa los siete pecados capitales. La más vistosa y favorita para posadas.',
+    bg: '#ffe0e8', pico: '#2f7a3a', forrado: '#f4b81b', mechudos: '#2f7a3a',
+  },
+  {
+    n: 8, badge: 'Premium', nombre: 'Estrella de 8 picos',
+    desc: 'Más drama, más simetría. Cuesta más trabajo armarla pero llena la sala. Para fiestas grandes y fotos memorables.',
+    bg: '#dcf0df', pico: '#e2357a', forrado: '#f4b81b', mechudos: '#e2357a',
+  },
+];
+
+const tamanos = [
+  { id: 'mini',   nombre: 'Mini',        ref: 'De adorno',    dim: '~15 cm', scale: 0.28 },
+  { id: 'chica',  nombre: 'Chica',       ref: 'Para niños',   dim: '~30 cm', scale: 0.44 },
+  { id: 'tradi',  nombre: 'Tradicional', ref: 'La favorita',  dim: '~60 cm', scale: 0.64 },
+  { id: 'grande', nombre: 'Grande',      ref: 'Para eventos', dim: '~90 cm', scale: 0.82 },
+  { id: 'jumbo',  nombre: 'Jumbo',       ref: 'La reina',     dim: '~1.2 m', scale: 1.0  },
+];
+
+const galeria = [
+  { pico:'#a8231f', forr:'#f4b81b', mech:'#a8231f', n:7, tall:true,  nombre:'Estrella 7 picos · Guinda metálico',  mat:'Picos metálicos · Cuerpo papelitos' },
+  { pico:'#2f7a3a', forr:'#f4b81b', mech:'#2f7a3a', n:5, tall:false, nombre:'Estrella 5 picos · Verde crepé',       mat:'Picos crepé · Cuerpo papel china' },
+  { pico:'#e2357a', forr:'#f4b81b', mech:'#e2357a', n:8, tall:false, nombre:'Estrella 8 picos · Rosa metálico',     mat:'Picos metálicos · Cuerpo papel chino' },
+  { pico:'#1f7aa8', forr:'#f4b81b', mech:'#1f7aa8', n:5, tall:false, nombre:'Estrella 5 picos · Azul metálico',     mat:'Picos metálicos · Cuerpo papelitos' },
+  { pico:'#a8231f', forr:'#cfcfcf', mech:'#a8231f', n:7, tall:false, nombre:'Estrella 7 picos · Guinda y plata',   mat:'Picos metálicos · Cuerpo papel chino' },
+  { pico:'#2f7a3a', forr:'#cfcfcf', mech:'#2f7a3a', n:8, tall:false, nombre:'Estrella 8 picos · Verde y plata',    mat:'Picos crepé · Cuerpo papel china' },
+  { pico:'#e2357a', forr:'#f4b81b', mech:'#1f7aa8', n:5, tall:false, nombre:'Estrella 5 picos · Rosa y azul',      mat:'Picos metálicos · Cuerpo papelitos' },
+];
+
+const confetti = [
+  { left: 8,  delay: 0,   dur: 7,  color: '#a8231f', rot: 15 },
+  { left: 17, delay: 1.2, dur: 9,  color: '#f4b81b', rot: -20 },
+  { left: 27, delay: 0.4, dur: 8,  color: '#2f7a3a', rot: 35 },
+  { left: 38, delay: 2.1, dur: 6,  color: '#e2357a', rot: -10 },
+  { left: 52, delay: 0.8, dur: 10, color: '#1f7aa8', rot: 22 },
+  { left: 63, delay: 1.7, dur: 7,  color: '#a8231f', rot: -30 },
+  { left: 74, delay: 0.3, dur: 9,  color: '#f4b81b', rot: 18 },
+  { left: 83, delay: 2.5, dur: 8,  color: '#2f7a3a', rot: -25 },
+  { left: 91, delay: 1.0, dur: 6,  color: '#e2357a', rot: 40 },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="description" content="Piñatas artesanales hechas a mano en Coacalco. 5, 7 y 8 picos. Entrega en 48 hrs." />
+  <title>Piñatas La Estrella · Hechas a mano en Coacalco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Caprasimo&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- Espaciado para nav fijo -->
+<div style="height:74px"></div>
+
+<!-- ── NAV ──────────────────────────────────────────── -->
+<nav style="position:fixed;top:0;left:0;width:100%;z-index:31;background:var(--crema);border-bottom:2px dashed rgba(168,35,31,.25);box-shadow:0 2px 12px rgba(0,0,0,.06)">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;max-width:1200px;margin:0 auto">
+    <!-- Logo -->
+    <a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none">
+      <svg width="42" height="42" viewBox="-50 -50 100 100">
+        <polygon points="0,-45 8,-8 45,0 8,8 0,45 -8,8 -45,0 -8,-8" fill="var(--guinda)"/>
+        <circle cx="0" cy="0" r="12" fill="var(--amarillo)"/>
+      </svg>
+      <div>
+        <div class="display" style="font-size:20px;line-height:1">Piñatas La Estrella</div>
+        <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--guinda);font-weight:700;margin-top:2px">Taller artesanal · Est. 2001</div>
+      </div>
+    </a>
+    <!-- Links -->
+    <ul style="display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:13px;font-weight:600">
+      <li><a href="#catalogo" style="text-decoration:none">Catálogo</a></li>
+      <li><a href="#tamanos" style="text-decoration:none">Tamaños</a></li>
+      <li><a href="#materiales" style="text-decoration:none">Materiales</a></li>
+      <li><a href="#pedido" style="text-decoration:none">Pedidos</a></li>
+    </ul>
+    <!-- CTA WhatsApp -->
+    <a href="https://wa.me/525512345678?text=Hola%2C%20quiero%20cotizar%20una%20pi%C3%B1ata" target="_blank" rel="noopener"
+      style="background:#25d366;color:#fff;padding:11px 18px;border-radius:999px;font-weight:700;display:inline-flex;align-items:center;gap:8px;font-size:14px;text-decoration:none">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.54-3.87c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────── -->
+<section id="top" style="position:relative;padding:80px 0 100px;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--crema)">
+
+  <!-- Confeti cayendo -->
+  {confetti.map(c => (
+    <div style={`position:absolute;width:9px;height:18px;background:${c.color};border-radius:2px;top:-30px;left:${c.left}%;animation:fall ${c.dur}s ${c.delay}s linear infinite;opacity:.9;transform:rotate(${c.rot}deg);z-index:0`}></div>
+  ))}
+
+  <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;max-width:1200px;margin:0 auto;padding:0 48px;position:relative;z-index:1;width:100%">
+
+    <!-- Copy -->
+    <div>
+      <span style="display:inline-flex;align-items:center;gap:10px;background:var(--amarillo);color:var(--tinta);padding:7px 14px;border-radius:999px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px">
+        <span style="width:8px;height:8px;border-radius:50%;background:var(--guinda);display:inline-block"></span>
+        Piñatas para toda ocasión
+      </span>
+      <h1 class="display" style="font-size:clamp(52px,7vw,88px);margin:0 0 22px">
+        Piñatas <span style="color:var(--guinda)">hechas</span><br/>
+        <span style="color:var(--verde)">a mano</span>
+      </h1>
+      <p style="font-size:18px;line-height:1.55;color:var(--tinta-soft);max-width:500px;margin:0 0 28px">
+        Pura artesanía mexicana. Cada piñata sale de nuestras manos directo a tu fiesta — hecha con papel y engrudo, una por una.
+      </p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+        <a href="https://wa.me/525512345678?text=Hola%2C%20quiero%20cotizar" target="_blank" rel="noopener"
+          style="background:var(--guinda);color:#fff;padding:14px 22px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;box-shadow:0 6px 0 var(--guinda-2)">
+          Cotizar por WhatsApp →
+        </a>
+        <a href="/catalogo" style="padding:14px 18px;font-weight:700;font-size:15px;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px">
+          Ver catálogo
+        </a>
+      </div>
+      <!-- Stats -->
+      <div style="display:flex;gap:32px;margin-top:42px">
+        <div>
+          <b class="display" style="display:block;font-size:36px;color:var(--guinda);line-height:1">25</b>
+          <span style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--tinta-soft);font-weight:600">años de oficio</span>
+        </div>
+        <div>
+          <b class="display" style="display:block;font-size:36px;color:var(--guinda);line-height:1">5</b>
+          <span style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--tinta-soft);font-weight:600">tamaños</span>
+        </div>
+        <div>
+          <b class="display" style="display:block;font-size:36px;color:var(--guinda);line-height:1">100%</b>
+          <span style="font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--tinta-soft);font-weight:600">piezas únicas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Piñata colgante -->
+    <div style="position:relative;aspect-ratio:1/1.1;overflow:visible">
+      <!-- Viga -->
+      <div style="position:absolute;top:0;left:10%;right:10%;height:7px;background:linear-gradient(180deg,#4a2f1c,#2a1810);border-radius:3px;z-index:1;box-shadow:0 2px 0 rgba(0,0,0,.15)">
+        <div style="position:absolute;top:-3px;left:-6px;width:14px;height:13px;background:#1a0e08;border-radius:3px"></div>
+        <div style="position:absolute;top:-3px;right:-6px;width:14px;height:13px;background:#1a0e08;border-radius:3px"></div>
+      </div>
+      <!-- Colgante con swing -->
+      <div style="position:absolute;top:6px;left:50%;z-index:3;transform-origin:top center;transform:translateX(-50%);animation:swing 4.2s ease-in-out infinite">
+        <div style="width:3px;height:80px;margin:0 auto;background:linear-gradient(180deg,#7a4d28,#3a2010);border-radius:2px;position:relative">
+          <div style="position:absolute;top:-4px;left:-3px;width:9px;height:9px;background:#1a0e08;border-radius:50%"></div>
+        </div>
+        <!-- Piñata con bob -->
+        <div style="margin-top:-22px;animation:bob 2.1s ease-in-out infinite alternate;transform-origin:center top;filter:drop-shadow(0 24px 24px rgba(0,0,0,.18))">
+          <Pinata picos="#a8231f" forrado="#f4b81b" mechudos="#a8231f" numPicos={7} size={280} />
+        </div>
+      </div>
+      <!-- Stickers flotantes -->
+      <div style="position:absolute;background:#fff;padding:10px 16px;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.15);font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;z-index:5;top:18%;right:-10px;color:var(--verde);animation:wiggle 5s ease-in-out infinite">
+        <span style="width:10px;height:10px;border-radius:50%;background:currentColor;display:inline-block"></span> 100% papel
+      </div>
+      <div style="position:absolute;background:#fff;padding:10px 16px;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.15);font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;z-index:5;bottom:30%;left:-22px;color:var(--guinda);animation:wiggle 5.6s ease-in-out infinite -1.3s">
+        <span style="width:10px;height:10px;border-radius:50%;background:currentColor;display:inline-block"></span> A pedido
+      </div>
+      <div style="position:absolute;background:var(--amarillo);padding:10px 16px;border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.15);font-weight:700;font-size:14px;z-index:5;bottom:8%;right:6%;animation:wiggle 4.8s ease-in-out infinite -2.1s">
+        ¡A todo color!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BANDA VERDE (sticky bajo el navbar) ─────────────── -->
+<div class="picado verde" style="position:sticky;top:74px;z-index:20"></div>
+
+<!-- ── CATÁLOGO ──────────────────────────────────────── -->
+<section id="catalogo" style="padding:32px 0 36px;min-height:calc(100vh - 74px - 42px);background:var(--crema);text-align:center;display:flex;align-items:center">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;width:100%">
+    <span style="display:inline-block;color:var(--guinda);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:8px">✦ Formas tradicionales ✦</span>
+    <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);margin:0 0 10px">5, 7 u 8 picos. Tú escoges.</h2>
+    <p style="font-size:15px;line-height:1.5;color:var(--tinta-soft);max-width:580px;margin:0 auto 24px">La estrella clásica mexicana en tres siluetas. Más picos, más drama. Cada una se arma a mano, pico por pico.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      {picos.map(p => (
+        <div style={`background:${p.bg};border-radius:20px;padding:20px 20px 22px;text-align:center;border:3px solid var(--tinta);box-shadow:6px 6px 0 var(--tinta);transition:transform .15s,box-shadow .15s`}
+          class="pico-card">
+          <div style="width:130px;height:130px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center">
+            <Pinata picos={p.pico} forrado={p.forrado} mechudos={p.mechudos} numPicos={p.n} size={120} rotate={-8} />
+          </div>
+          <span style="display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;background:var(--tinta);color:var(--crema);padding:3px 10px;border-radius:999px;margin-bottom:8px">
+            {p.badge}
+          </span>
+          <h3 class="display" style="font-size:22px;margin:4px 0 6px">{p.nombre}</h3>
+          <p style="margin:0;font-size:13px;color:var(--tinta-soft);line-height:1.45">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── TAMAÑOS ──────────────────────────────────────── -->
+<section id="tamanos" style="padding:32px 0 36px;min-height:calc(100vh - 74px);background:var(--guinda);color:var(--crema);text-align:center;display:flex;align-items:center">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;width:100%">
+    <span style="display:inline-block;color:var(--amarillo);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:8px">✦ Cinco tamaños ✦</span>
+    <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);margin:0 0 10px;color:var(--crema)">Desde el carro hasta la jumbo</h2>
+    <p style="font-size:15px;line-height:1.5;color:rgba(253,243,223,.8);max-width:580px;margin:0 auto 20px">La talla más pedida es la "tradicional". Si tu fiesta es grande, vamos hasta jumbo.</p>
+
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-top:20px;border-top:1px solid rgba(253,243,223,.2)">
+      {tamanos.map(t => (
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center">
+          <div style="display:flex;align-items:flex-end;height:190px;margin-bottom:12px">
+            <div style={`transform:scale(${t.scale});transform-origin:bottom center`}>
+              <Pinata picos="#fdf3df" forrado="#f4b81b" mechudos="#fdf3df" numPicos={7} size={160} />
+            </div>
+          </div>
+          <h4 class="display" style="font-size:18px;margin:0;color:var(--amarillo)">{t.nombre}</h4>
+          <div style="font-size:12px;color:rgba(253,243,223,.75);margin-top:3px;font-weight:500">{t.ref}</div>
+          <div style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(253,243,223,.5);margin-top:4px;font-weight:600">{t.dim}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ── MATERIALES ─────────────────────────────────────── -->
+<section id="materiales" style="padding:32px 0 36px;min-height:calc(100vh - 74px);background:var(--crema);display:flex;align-items:center">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;width:100%">
+    <div style="text-align:center;margin-bottom:20px">
+      <span style="display:inline-block;color:var(--guinda);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:8px">✦ Forros y acabados ✦</span>
+      <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);margin:0 0 10px">Combina picos y cuerpo</h2>
+      <p style="font-size:15px;line-height:1.5;color:var(--tinta-soft);max-width:580px;margin:0 auto">Crepé o metálico en los picos. Papelitos de china o papel chino en el cuerpo. Tú eliges la combinación.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px">
+      <!-- Picos -->
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--guinda);margin-bottom:6px">Forro de picos</div>
+        <h3 class="serif" style="font-size:22px;margin:0 0 14px">Crepé o metálico</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          {[
+            { bg:'repeating-linear-gradient(180deg,#a8231f 0 6px,#c03430 6px 9px)', label:'Crepé rojo' },
+            { bg:'repeating-linear-gradient(180deg,#2f7a3a 0 6px,#3f9a4a 6px 9px)', label:'Crepé verde' },
+            { bg:'linear-gradient(135deg,#7a1010 0%,#e64545 30%,#fff 45%,#e64545 60%,#a8231f 100%)', label:'Metálico rojo' },
+            { bg:'linear-gradient(135deg,#0c3a6a 0%,#3a86cf 30%,#fff 45%,#3a86cf 60%,#1f5a9c 100%)', label:'Metálico azul' },
+          ].map(s => (
+            <div style={`aspect-ratio:1;border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;font-weight:700;font-size:13px;border:3px solid var(--tinta);background:${s.bg}`}>
+              <small style="display:block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;opacity:.85;margin-bottom:2px">Picos</small>
+              {s.label}
+            </div>
+          ))}
+        </div>
+      </div>
+      <!-- Cuerpo -->
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--guinda);margin-bottom:6px">Forro del cuerpo</div>
+        <h3 class="serif" style="font-size:22px;margin:0 0 14px">Papelitos o chino</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          {[
+            { bg:'radial-gradient(circle at 20% 30%,#e2357a 14px,transparent 15px),radial-gradient(circle at 70% 60%,#f4b81b 14px,transparent 15px),radial-gradient(circle at 35% 75%,#2f7a3a 14px,transparent 15px),radial-gradient(circle at 80% 20%,#1f7aa8 14px,transparent 15px),radial-gradient(circle at 50% 50%,#a8231f 14px,transparent 15px);background-color:#fdf3df;color:#2a1a10', label:'Papel de china' },
+            { bg:'repeating-linear-gradient(45deg,#e2357a 0 14px,#f4b81b 14px 28px,#2f7a3a 28px 42px,#1f7aa8 42px 56px)', label:'Papel chino' },
+            { bg:'repeating-linear-gradient(180deg,#f4b81b 0 6px,#f5cc4a 6px 9px)', label:'Crepé amarillo' },
+            { bg:'repeating-linear-gradient(180deg,#1f7aa8 0 6px,#3a92c0 6px 9px)', label:'Crepé azul' },
+          ].map(s => (
+            <div style={`aspect-ratio:1;border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;font-weight:700;font-size:13px;border:3px solid var(--tinta);background:${s.bg}`}>
+              <small style="display:block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;opacity:.85;margin-bottom:2px">Cuerpo</small>
+              {s.label}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONFIGURADOR ─────────────────────────────────── -->
+<section id="configurador" style="padding:32px 0 36px;min-height:calc(100vh - 74px);background:var(--verde);color:var(--crema);display:flex;align-items:center">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;width:100%">
+    <div style="text-align:center;margin-bottom:18px">
+      <span style="display:inline-block;color:var(--amarillo);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:8px">✦ Arma la tuya ✦</span>
+      <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);margin:0 0 8px;color:var(--crema)">Diseña tu piñata en 4 pasos</h2>
+      <p style="font-size:14px;line-height:1.5;color:rgba(253,243,223,.8);max-width:560px;margin:0 auto">Escoge forma, tamaño y materiales. Te abrimos WhatsApp con tu pedido ya escrito.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;background:var(--crema);color:var(--tinta);border-radius:24px;padding:32px;border:4px solid var(--tinta);box-shadow:10px 10px 0 var(--tinta)">
+      <!-- Preview -->
+      <div style="aspect-ratio:1;background:#fff;border-radius:16px;border:3px solid var(--tinta);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
+        <div style="position:absolute;inset:0;background-image:radial-gradient(circle at 20% 20%,rgba(168,35,31,.06) 2px,transparent 3px),radial-gradient(circle at 70% 60%,rgba(47,122,58,.06) 2px,transparent 3px);background-size:30px 30px"></div>
+        <div id="config-preview" style="position:relative;z-index:1;transition:all .3s">
+          <Pinata picos="#a8231f" forrado="#f4b81b" mechudos="#a8231f" numPicos={7} size={240} rotate={-5} />
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <div style="display:flex;flex-direction:column;gap:14px" id="config-steps">
+        <!-- Paso 1: Forma -->
+        <div>
+          <h4 style="font-family:'Bagel Fat One',serif;font-size:13px;margin:0 0 7px;text-transform:uppercase;letter-spacing:.06em;color:var(--guinda);display:flex;align-items:center;gap:7px">
+            <span style="display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--guinda);color:#fff;align-items:center;justify-content:center;font-size:11px">1</span>
+            Forma
+          </h4>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            {['5 picos', '7 picos', '8 picos'].map((o, i) => (
+              <button class={`opt-btn${i === 1 ? ' active' : ''}`} data-group="forma" data-val={o}
+                style={`padding:7px 12px;border:2px solid var(--tinta);background:${i===1?'var(--guinda)':'#fff'};color:${i===1?'#fff':'inherit'};border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;transition:all .12s`}>
+                {o}
+              </button>
+            ))}
+          </div>
+        </div>
+        <!-- Paso 2: Tamaño -->
+        <div>
+          <h4 style="font-family:'Bagel Fat One',serif;font-size:13px;margin:0 0 7px;text-transform:uppercase;letter-spacing:.06em;color:var(--guinda);display:flex;align-items:center;gap:7px">
+            <span style="display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--guinda);color:#fff;align-items:center;justify-content:center;font-size:11px">2</span>
+            Tamaño
+          </h4>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            {['Mini', 'Chica', 'Tradicional', 'Grande', 'Jumbo'].map((o, i) => (
+              <button class={`opt-btn${i === 2 ? ' active' : ''}`} data-group="tamano" data-val={o}
+                style={`padding:7px 12px;border:2px solid var(--tinta);background:${i===2?'var(--guinda)':'#fff'};color:${i===2?'#fff':'inherit'};border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;transition:all .12s`}>
+                {o}
+              </button>
+            ))}
+          </div>
+        </div>
+        <!-- Paso 3: Picos -->
+        <div>
+          <h4 style="font-family:'Bagel Fat One',serif;font-size:13px;margin:0 0 7px;text-transform:uppercase;letter-spacing:.06em;color:var(--guinda);display:flex;align-items:center;gap:7px">
+            <span style="display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--guinda);color:#fff;align-items:center;justify-content:center;font-size:11px">3</span>
+            Material de picos
+          </h4>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            {['Crepé', 'Metálico'].map((o, i) => (
+              <button class={`opt-btn${i === 1 ? ' active' : ''}`} data-group="mat-picos" data-val={o}
+                style={`padding:7px 12px;border:2px solid var(--tinta);background:${i===1?'var(--guinda)':'#fff'};color:${i===1?'#fff':'inherit'};border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;transition:all .12s`}>
+                {o}
+              </button>
+            ))}
+          </div>
+        </div>
+        <!-- Paso 4: Cuerpo -->
+        <div>
+          <h4 style="font-family:'Bagel Fat One',serif;font-size:13px;margin:0 0 7px;text-transform:uppercase;letter-spacing:.06em;color:var(--guinda);display:flex;align-items:center;gap:7px">
+            <span style="display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--guinda);color:#fff;align-items:center;justify-content:center;font-size:11px">4</span>
+            Material del cuerpo
+          </h4>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            {['Papelitos', 'Papel chino', 'Crepé'].map((o, i) => (
+              <button class={`opt-btn${i === 0 ? ' active' : ''}`} data-group="mat-cuerpo" data-val={o}
+                style={`padding:7px 12px;border:2px solid var(--tinta);background:${i===0?'var(--guinda)':'#fff'};color:${i===0?'#fff':'inherit'};border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;transition:all .12s`}>
+                {o}
+              </button>
+            ))}
+          </div>
+        </div>
+        <!-- CTA -->
+        <div style="margin-top:4px">
+          <a id="wa-config-btn" href="https://wa.me/525512345678?text=Hola%2C%20quiero%20cotizar%20una%20pi%C3%B1ata" target="_blank" rel="noopener"
+            style="background:#25d366;color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;display:inline-flex;align-items:center;gap:8px;font-size:15px;text-decoration:none;width:100%;justify-content:center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.54-3.87c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            Enviar pedido por WhatsApp →
+          </a>
+          <p style="font-size:12px;color:var(--tinta-soft);margin-top:6px;text-align:center">Te abrimos la app con tu pedido ya escrito</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALERÍA ──────────────────────────────────────── -->
+<section id="galeria" style="padding:32px 0 36px;min-height:calc(100vh - 74px);background:var(--crema);text-align:center;display:flex;align-items:center">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;width:100%">
+    <span style="display:inline-block;color:var(--guinda);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:8px">✦ Trabajos recientes ✦</span>
+    <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);margin:0 0 8px">Piñatas que ya volaron</h2>
+    <p style="font-size:15px;line-height:1.5;color:var(--tinta-soft);max-width:580px;margin:0 auto 20px">Una selección de los pedidos recientes. Si quieres una igualita, dinos cuál y la replicamos.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+      {galeria.map((g, i) => (
+        <div class="gallery-card" data-index={i}
+          style={`${g.tall ? 'grid-row:span 2;aspect-ratio:1/1.88;' : 'aspect-ratio:1;'}border-radius:${g.tall?'16':'14'}px;overflow:hidden;border:3px solid var(--tinta);box-shadow:${g.tall?'6px 6px':'5px 5px'} 0 var(--tinta);${g.tall ? 'background:repeating-linear-gradient(45deg,var(--crema) 0 12px,var(--crema-2) 12px 24px);' : 'background:var(--crema-2);'}display:flex;align-items:center;justify-content:center;cursor:pointer`}>
+          <Pinata picos={g.pico} forrado={g.forr} mechudos={g.mech} numPicos={g.n} size={g.tall ? 160 : 100} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Piñatas grandes pre-renderizadas para el modal (ocultas) -->
+    <div aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none">
+      {galeria.map((g, i) => (
+        <div id={`gmp-${i}`}>
+          <Pinata picos={g.pico} forrado={g.forr} mechudos={g.mech} numPicos={g.n} size={280} />
+        </div>
+      ))}
+    </div>
+    <div style="margin-top:20px">
+      <a href="/catalogo" style="display:inline-flex;align-items:center;gap:8px;background:var(--guinda);color:var(--crema);padding:11px 22px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--tinta);box-shadow:4px 4px 0 var(--tinta)">
+        Ver catálogo completo →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── MODAL GALERÍA ─────────────────────────────────── -->
+<div id="gallery-modal" role="dialog" aria-modal="true" aria-label="Ver piñata" style="display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center">
+  <!-- Backdrop -->
+  <div id="modal-backdrop" style="position:absolute;inset:0;background:rgba(42,26,16,.65);backdrop-filter:blur(3px)"></div>
+  <!-- Box -->
+  <div style="position:relative;z-index:1;background:var(--crema);border-radius:28px;border:3px solid var(--tinta);box-shadow:12px 12px 0 var(--tinta);padding:32px 36px 28px;max-width:500px;width:calc(100% - 48px);display:flex;flex-direction:column;align-items:center;gap:16px">
+    <!-- Cerrar -->
+    <button id="modal-close" aria-label="Cerrar"
+      style="position:absolute;top:14px;right:16px;width:36px;height:36px;border-radius:50%;border:2px solid var(--tinta);background:#fff;font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:700">✕</button>
+    <!-- Contador -->
+    <div id="modal-counter" style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--tinta-soft)">1 / {galeria.length}</div>
+    <!-- SVG slot -->
+    <div id="modal-svg-slot" style="display:flex;align-items:center;justify-content:center;min-height:220px"></div>
+    <!-- Info -->
+    <div style="text-align:center">
+      <h3 id="modal-nombre" class="display" style="font-size:22px;margin:0 0 6px"></h3>
+      <p id="modal-mat" style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--guinda);margin:0 0 16px"></p>
+      <a id="modal-wa" href="#" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;padding:11px 20px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.54-3.87c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        Quiero una igual →
+      </a>
+    </div>
+    <!-- Navegación carrusel -->
+    <div style="display:flex;align-items:center;gap:16px;margin-top:4px">
+      <button id="modal-prev" aria-label="Anterior"
+        style="width:44px;height:44px;border-radius:50%;border:2px solid var(--tinta);background:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:3px 3px 0 var(--tinta)">‹</button>
+      <!-- Dots -->
+      <div id="modal-dots" style="display:flex;gap:7px">
+        {galeria.map((_, i) => (
+          <button class="modal-dot" data-dot={i} aria-label={`Ir a ${i+1}`}
+            style={`width:9px;height:9px;border-radius:50%;border:2px solid var(--tinta);background:${i===0?'var(--guinda)':'#fff'};cursor:pointer;padding:0`}></button>
+        ))}
+      </div>
+      <button id="modal-next" aria-label="Siguiente"
+        style="width:44px;height:44px;border-radius:50%;border:2px solid var(--tinta);background:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:3px 3px 0 var(--tinta)">›</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── PEDIDO ───────────────────────────────────────── -->
+<section id="pedido" style="padding:90px 0;background:var(--amarillo)">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px">
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start">
+      <!-- Info -->
+      <div>
+        <span style="display:inline-block;color:var(--guinda);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:14px">✦ Pídela ya ✦</span>
+        <h2 class="display" style="font-size:clamp(40px,6vw,64px);margin:0 0 16px;color:var(--guinda-2)">Cotiza en<br/>5 minutos</h2>
+        <p style="font-size:18px;line-height:1.55;color:var(--tinta-soft);margin:0 0 32px">La forma más rápida es WhatsApp. Si prefieres llenar el formulario, también te contestamos.</p>
+        <div style="display:flex;flex-direction:column;gap:20px">
+          {[
+            { icon:'📱', title:'WhatsApp', text:'+52 55 1234 5678 — Lun a Sáb, 9am–8pm' },
+            { icon:'📍', title:'Taller', text:'Blvd. de las Flores 432, Rinconada San Felipe · 55719 San Francisco Coacalco, Edo. Méx.' },
+            { icon:'⏱', title:'Tiempo de entrega', text:'48 horas para chica y tradicional · 4–5 días para grande y jumbo' },
+          ].map(r => (
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <div style="width:44px;height:44px;border-radius:12px;background:var(--guinda);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">{r.icon}</div>
+              <div>
+                <h5 class="display" style="font-size:18px;margin:0 0 4px">{r.title}</h5>
+                <p style="margin:0;font-size:14px;color:var(--tinta-soft);line-height:1.5">{r.text}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <!-- Form -->
+      <form onsubmit="this.querySelector('.form-submit').textContent='¡Enviado! Te escribimos pronto ✓';return false"
+        style="background:var(--crema);border-radius:24px;padding:32px;border:3px solid var(--tinta);box-shadow:10px 10px 0 var(--tinta)">
+        <h3 class="serif" style="font-size:26px;margin:0 0 4px">Cuéntanos qué necesitas</h3>
+        <p style="margin:0 0 20px;font-size:14px;color:var(--tinta-soft)">Te respondemos el mismo día.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <div>
+            <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-soft);margin-bottom:6px">Nombre</label>
+            <input placeholder="Tu nombre" style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px" />
+          </div>
+          <div>
+            <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-soft);margin-bottom:6px">Teléfono</label>
+            <input placeholder="55 0000 0000" style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px" />
+          </div>
+        </div>
+        <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-soft);margin:14px 0 6px">Fecha del evento</label>
+        <input type="date" style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px" />
+        <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-soft);margin:14px 0 6px">¿Qué piñata quieres?</label>
+        <textarea rows="3" placeholder="Ej: estrella de 7 picos tamaño tradicional, picos en metálico rojo, cuerpo en chino multicolor"
+          style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px;resize:vertical"></textarea>
+        <button type="submit" class="form-submit"
+          style="width:100%;background:var(--guinda);color:#fff;padding:14px;border-radius:14px;font-weight:700;font-size:16px;margin-top:18px;box-shadow:0 5px 0 var(--guinda-2);font-family:inherit">
+          Enviar pedido →
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────── -->
+<footer style="background:var(--tinta);color:var(--crema);padding:60px 0 30px">
+  <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:0 48px;max-width:1200px;margin:0 auto">
+    <div>
+      <h6 class="display" style="font-size:22px;margin:0 0 14px;color:var(--amarillo)">Piñatas La Estrella</h6>
+      <p style="font-size:14px;color:rgba(253,243,223,.7);line-height:1.7;margin:0">Taller familiar en San Francisco Coacalco. Tres generaciones armando piñatas de papel, una estrella a la vez.</p>
+    </div>
+    <div>
+      <h6 class="display" style="font-size:18px;margin:0 0 14px;color:var(--amarillo)">Catálogo</h6>
+      {['#catalogo·Por forma', '#tamanos·Por tamaño', '#materiales·Materiales', '#configurador·Arma tu piñata'].map(l => {
+        const [href, text] = l.split('·');
+        return <div><a href={href} style="font-size:14px;color:rgba(253,243,223,.7);text-decoration:none;line-height:2;display:block">{text}</a></div>;
+      })}
+    </div>
+    <div>
+      <h6 class="display" style="font-size:18px;margin:0 0 14px;color:var(--amarillo)">Contacto</h6>
+      <a href="https://wa.me/525512345678" style="font-size:14px;color:rgba(253,243,223,.7);text-decoration:none;line-height:2;display:block">WhatsApp</a>
+      <a href="tel:+525512345678" style="font-size:14px;color:rgba(253,243,223,.7);text-decoration:none;line-height:2;display:block">+52 55 1234 5678</a>
+      <a href="#pedido" style="font-size:14px;color:rgba(253,243,223,.7);text-decoration:none;line-height:2;display:block">Formulario</a>
+    </div>
+  </div>
+  <div style="border-top:1px dashed rgba(253,243,223,.2);margin-top:40px;padding:24px 48px 0;max-width:1200px;margin-left:auto;margin-right:auto;display:flex;justify-content:space-between;font-size:12px;color:rgba(253,243,223,.5)">
+    <span>© 2026 Piñatas La Estrella · Coacalco, Edo. Méx.</span>
+    <span>Hecho con papel, engrudo y mucho cariño 🇲🇽</span>
+  </div>
+</footer>
+
+<!-- ── WhatsApp flotante ────────────────────────────── -->
+<a href="https://wa.me/525512345678?text=Hola%2C%20quiero%20cotizar%20una%20pi%C3%B1ata" target="_blank" rel="noopener"
+  style="position:fixed;bottom:24px;right:24px;background:#25d366;color:#fff;padding:14px 20px;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:10px;box-shadow:0 8px 22px rgba(37,211,102,.35);z-index:40">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.54-3.87c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+  Cotizar por WhatsApp
+</a>
+
+<style>
+  .pico-card:hover { transform: translate(-3px,-3px); box-shadow: 11px 11px 0 var(--tinta) !important; }
+  .opt-btn:hover:not(.active) { background: var(--amarillo) !important; }
+  .opt-btn.active { background: var(--guinda) !important; color: #fff !important; border-color: var(--guinda) !important; }
+  .gallery-card { transition: transform .15s, box-shadow .15s; }
+  .gallery-card:hover { transform: translate(-2px,-2px); box-shadow: 9px 9px 0 var(--tinta) !important; }
+  #gallery-modal.open { display: flex !important; }
+  #modal-svg-slot svg { animation: fadeUp .25s ease; }
+  #modal-prev:hover, #modal-next:hover { background: var(--amarillo) !important; }
+  #modal-close:hover { background: var(--guinda) !important; color: #fff; }
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    section > div[style*="grid-template-columns:1.05fr"],
+    section > div[style*="grid-template-columns:1fr 1fr"],
+    section > div[style*="grid-template-columns:1fr 1.1fr"],
+    section > div[style*="grid-template-columns:1.4fr"] { grid-template-columns: 1fr !important; }
+    section > div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+<script>
+  // ── Galería modal ────────────────────────────────────────────────────
+  const galeriaData: { nombre: string; mat: string }[] = [
+    { nombre: 'Estrella 7 picos · Guinda metálico',  mat: 'Picos metálicos · Cuerpo papelitos' },
+    { nombre: 'Estrella 5 picos · Verde crepé',      mat: 'Picos crepé · Cuerpo papel china' },
+    { nombre: 'Estrella 8 picos · Rosa metálico',    mat: 'Picos metálicos · Cuerpo papel chino' },
+    { nombre: 'Estrella 5 picos · Azul metálico',    mat: 'Picos metálicos · Cuerpo papelitos' },
+    { nombre: 'Estrella 7 picos · Guinda y plata',   mat: 'Picos metálicos · Cuerpo papel chino' },
+    { nombre: 'Estrella 8 picos · Verde y plata',    mat: 'Picos crepé · Cuerpo papel china' },
+    { nombre: 'Estrella 5 picos · Rosa y azul',      mat: 'Picos metálicos · Cuerpo papelitos' },
+  ];
+
+  const modal      = document.getElementById('gallery-modal')!;
+  const backdrop   = document.getElementById('modal-backdrop')!;
+  const closeBtn   = document.getElementById('modal-close')!;
+  const prevBtn    = document.getElementById('modal-prev')!;
+  const nextBtn    = document.getElementById('modal-next')!;
+  const svgSlot    = document.getElementById('modal-svg-slot')!;
+  const nombreEl   = document.getElementById('modal-nombre')!;
+  const matEl      = document.getElementById('modal-mat')!;
+  const counterEl  = document.getElementById('modal-counter')!;
+  const waLink     = document.getElementById('modal-wa') as HTMLAnchorElement;
+  const dots       = document.querySelectorAll<HTMLElement>('.modal-dot');
+  let current      = 0;
+
+  function openModal(index: number) {
+    current = index;
+    renderModal();
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function renderModal() {
+    const source = document.getElementById(`gmp-${current}`);
+    svgSlot.innerHTML = '';
+    if (source?.firstElementChild) {
+      svgSlot.appendChild(source.firstElementChild.cloneNode(true));
+    }
+    const info = galeriaData[current];
+    nombreEl.textContent  = info.nombre;
+    matEl.textContent     = info.mat;
+    counterEl.textContent = `${current + 1} / ${galeriaData.length}`;
+    waLink.href = `https://wa.me/525512345678?text=${encodeURIComponent(`Hola, vi esta piñata en su galería y quiero una igual:\n• ${info.nombre}\n• ${info.mat}\n\n¿Me dan precio y disponibilidad?`)}`;
+    dots.forEach((d, i) => {
+      d.style.background = i === current ? 'var(--guinda)' : '#fff';
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('.gallery-card').forEach(card => {
+    card.addEventListener('click', () => openModal(Number(card.dataset.index)));
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+  prevBtn.addEventListener('click', () => {
+    current = (current - 1 + galeriaData.length) % galeriaData.length;
+    renderModal();
+  });
+  nextBtn.addEventListener('click', () => {
+    current = (current + 1) % galeriaData.length;
+    renderModal();
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      current = Number(dot.dataset.dot);
+      renderModal();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft')  { current = (current - 1 + galeriaData.length) % galeriaData.length; renderModal(); }
+    if (e.key === 'ArrowRight') { current = (current + 1) % galeriaData.length; renderModal(); }
+  });
+
+  // ── Configurador: toggle activo en grupos de botones
+  document.querySelectorAll<HTMLButtonElement>('.opt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.dataset.group;
+      document.querySelectorAll<HTMLButtonElement>(`.opt-btn[data-group="${group}"]`).forEach(b => {
+        b.classList.remove('active');
+        b.style.background = '#fff';
+        b.style.color = 'var(--tinta)';
+        b.style.borderColor = 'var(--tinta)';
+      });
+      btn.classList.add('active');
+      btn.style.background = 'var(--guinda)';
+      btn.style.color = '#fff';
+      btn.style.borderColor = 'var(--guinda)';
+
+      // Actualizar link de WhatsApp con selecciones
+      const forma    = document.querySelector<HTMLButtonElement>('.opt-btn[data-group="forma"].active')?.dataset.val ?? '7 picos';
+      const tamano   = document.querySelector<HTMLButtonElement>('.opt-btn[data-group="tamano"].active')?.dataset.val ?? 'Tradicional';
+      const matPicos = document.querySelector<HTMLButtonElement>('.opt-btn[data-group="mat-picos"].active')?.dataset.val ?? 'Metálico';
+      const matCuerp = document.querySelector<HTMLButtonElement>('.opt-btn[data-group="mat-cuerpo"].active')?.dataset.val ?? 'Papelitos';
+      const msg = `Hola, quiero cotizar una piñata: Estrella de ${forma}, tamaño ${tamano}, picos en ${matPicos}, cuerpo en ${matCuerp}.`;
+      const waBtn = document.getElementById('wa-config-btn') as HTMLAnchorElement;
+      if (waBtn) waBtn.href = `https://wa.me/525512345678?text=${encodeURIComponent(msg)}`;
+    });
+  });
+</script>
+
+</body>
 </html>
