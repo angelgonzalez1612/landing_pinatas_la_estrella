@@ -1,43 +1,49 @@
-# Astro Starter Kit: Minimal
+# Landing Piñatas La Estrella
 
-```sh
-npm create astro@latest -- --template minimal
+Landing page y catálogo estático para `Piñatas La Estrella`, construido con Astro.
+
+## Stack
+
+- `Astro`
+- `Tailwind CSS v4` cargado desde `src/styles/global.css`
+- Componentes `.astro`
+
+## Rutas
+
+- `/` landing principal
+- `/catalogo` catálogo de modelos
+
+## Desarrollo
+
+Requisitos:
+
+- `Node.js >= 22.12.0`
+
+Comandos:
+
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Estructura
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+  components/
+    Pinata.astro
+  pages/
+    index.astro
+    catalogo.astro
+  styles/
+    global.css
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Pendientes antes de producción
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Reemplazar teléfono, dirección y enlaces de WhatsApp por datos reales.
+- Conectar el formulario a un backend o servicio real.
+- Mejorar accesibilidad de tarjetas y modales.
+- Revisar SEO y metadatos finales.
