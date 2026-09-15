@@ -38,6 +38,21 @@ const galeria = [
   { pico:'#e2357a', forr:'#f4b81b', mech:'#1f7aa8', n:5, tall:false, nombre:'Estrella 5 picos · Rosa y azul',      mat:'Picos metálicos · Cuerpo papelitos' },
 ];
 
+const escolares = [
+  {
+    tipoSlug: 'dulcera', tipoLabel: 'Dulcera · para romper', badge: 'La más pedida en escuelas',
+    pico: '#1f7aa8', forr: '#fdf3df',
+    desc: 'Armada para aguantar el golpe del palo y repartir dulces sin problema. Materiales sencillos para que el precio baje en pedidos grandes.',
+    bullets: ['Ideal para pedidos de 10 piezas o más', 'Tamaños mini y chica, fáciles de romper', 'Colores por salón, grado o generación'],
+  },
+  {
+    tipoSlug: 'exhibicion', tipoLabel: 'De exhibición', badge: 'Para lucir antes del golpe',
+    pico: '#a8231f', forr: '#f4b81b',
+    desc: 'Con más detalle y acabado metálico. Perfecta si además de romperla la quieres de foto o para decorar el festival.',
+    bullets: ['Tamaños tradicional a jumbo', 'Picos metálicos o en crepé', 'Se puede personalizar por tema o color institucional'],
+  },
+];
+
 const confetti = [
   { left: 8,  delay: 0,   dur: 7,  color: '#a8231f', rot: 15 },
   { left: 17, delay: 1.2, dur: 9,  color: '#f4b81b', rot: -20 },
@@ -57,11 +72,51 @@ const confetti = [
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content={Astro.generator} />
-  <meta name="description" content="Piñatas artesanales hechas a mano en Coacalco. 5, 7 y 8 picos. Entrega en 48 hrs." />
-  <title>Piñatas La Estrella · Hechas a mano en Coacalco</title>
+  <meta name="description" content="Piñatas artesanales hechas a mano en San Francisco Coacalco, Edo. Méx. Estrella de 5, 7 y 8 picos, a la medida, para posadas, cumpleaños y XV años. Entrega en 48 hrs." />
+  <title>Piñatas La Estrella · Piñatas artesanales hechas a mano en Coacalco</title>
+  <link rel="canonical" href="https://landing-pinatas.vercel.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Piñatas La Estrella" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:url" content="https://landing-pinatas.vercel.app/" />
+  <meta property="og:title" content="Piñatas La Estrella · Piñatas artesanales hechas a mano en Coacalco" />
+  <meta property="og:description" content="Piñatas artesanales hechas a mano en San Francisco Coacalco, Edo. Méx. Estrella de 5, 7 y 8 picos, a la medida, para posadas, cumpleaños y XV años." />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Piñatas La Estrella · Hechas a mano en Coacalco" />
+  <meta name="twitter:description" content="Piñatas artesanales hechas a mano en San Francisco Coacalco, Edo. Méx. Estrella de 5, 7 y 8 picos, a la medida." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Caprasimo&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Store',
+    name: 'Piñatas La Estrella',
+    description: 'Taller artesanal de piñatas hechas a mano en San Francisco Coacalco, Estado de México.',
+    url: 'https://landing-pinatas.vercel.app/',
+    telephone: '+52-55-1234-5678',
+    email: 'hola@pinataslaestella.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Blvd. de las Flores 432, Rinconada San Felipe',
+      addressLocality: 'San Francisco Coacalco',
+      addressRegion: 'Estado de México',
+      postalCode: '55719',
+      addressCountry: 'MX',
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '09:00',
+      closes: '20:00',
+    },
+    priceRange: '$$',
+  })} />
 </head>
 <body>
 
@@ -69,8 +124,8 @@ const confetti = [
 <div style="height:74px"></div>
 
 <!-- ── NAV ──────────────────────────────────────────── -->
-<nav style="position:fixed;top:0;left:0;width:100%;z-index:31;background:var(--crema);border-bottom:2px dashed rgba(168,35,31,.25);box-shadow:0 2px 12px rgba(0,0,0,.06)">
-  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;max-width:1200px;margin:0 auto">
+<nav id="site-nav" style="position:fixed;top:0;left:0;width:100%;z-index:31;background:var(--crema);border-bottom:2px dashed rgba(168,35,31,.25);box-shadow:0 2px 12px rgba(0,0,0,.06)">
+  <div id="nav-bar" style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;max-width:1200px;margin:0 auto">
     <!-- Logo -->
     <a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none">
       <svg width="42" height="42" viewBox="-50 -50 100 100">
@@ -78,23 +133,32 @@ const confetti = [
         <circle cx="0" cy="0" r="12" fill="var(--amarillo)"/>
       </svg>
       <div>
-        <div class="display" style="font-size:20px;line-height:1">Piñatas La Estrella</div>
-        <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--guinda);font-weight:700;margin-top:2px">Taller artesanal · Est. 2001</div>
+        <div id="nav-logo-title" class="display" style="font-size:20px;line-height:1">Piñatas La Estrella</div>
+        <div id="nav-logo-sub" style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--guinda);font-weight:700;margin-top:2px">Taller artesanal · Est. 2001</div>
       </div>
     </a>
     <!-- Links -->
-    <ul style="display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:13px;font-weight:600">
-      <li><a href="#catalogo" style="text-decoration:none">Catálogo</a></li>
+    <ul id="nav-links" style="display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:13px;font-weight:600">
+      <li><a href="/catalogo" style="text-decoration:none">Catálogo</a></li>
       <li><a href="#tamanos" style="text-decoration:none">Tamaños</a></li>
       <li><a href="#materiales" style="text-decoration:none">Materiales</a></li>
+      <li><a href="#escuelas" style="text-decoration:none">Escuelas</a></li>
       <li><a href="#pedido" style="text-decoration:none">Pedidos</a></li>
     </ul>
-    <!-- CTA WhatsApp -->
-    <a href="https://wa.me/525512345678?text=Hola%2C%20quiero%20cotizar%20una%20pi%C3%B1ata" target="_blank" rel="noopener"
-      style="background:#25d366;color:#fff;padding:11px 18px;border-radius:999px;font-weight:700;display:inline-flex;align-items:center;gap:8px;font-size:14px;text-decoration:none">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.54-3.87c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-      WhatsApp
-    </a>
+    <div style="display:flex;align-items:center;gap:10px">
+      <!-- CTA Correo -->
+      <a href="mailto:hola@pinataslaestella.com?subject=Cotización%20de%20piñata&body=Hola%2C%20quiero%20cotizar%20una%20piñata.%20¿Me%20pueden%20dar%20precio%20y%20disponibilidad%3F"
+        style="background:var(--guinda);color:#fff;padding:11px 18px;border-radius:999px;font-weight:700;display:inline-flex;align-items:center;gap:8px;font-size:14px;text-decoration:none">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span id="nav-cta-text">Cotizar</span>
+      </a>
+      <!-- Hamburger (solo móvil) -->
+      <button id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"
+        style="display:none;width:40px;height:40px;flex-shrink:0;border:2px solid var(--tinta);border-radius:10px;background:#fff;align-items:center;justify-content:center;cursor:pointer">
+        <svg id="nav-icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="nav-icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -213,9 +277,9 @@ const confetti = [
     <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);margin:0 0 10px;color:var(--crema)">Desde el carro hasta la jumbo</h2>
     <p style="font-size:15px;line-height:1.5;color:rgba(253,243,223,.8);max-width:580px;margin:0 auto 20px">La talla más pedida es la "tradicional". Si tu fiesta es grande, vamos hasta jumbo.</p>
 
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-top:20px;border-top:1px solid rgba(253,243,223,.2)">
+    <div id="tamanos-row" style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-top:20px;border-top:1px solid rgba(253,243,223,.2)">
       {tamanos.map(t => (
-        <div style="flex:1;display:flex;flex-direction:column;align-items:center;text-align:center">
+        <div style="flex:1;min-width:84px;display:flex;flex-direction:column;align-items:center;text-align:center">
           <div style="display:flex;align-items:flex-end;height:190px;margin-bottom:12px">
             <div style={`transform:scale(${t.scale});transform-origin:bottom center`}>
               <Pinata picos="#fdf3df" forrado="#f4b81b" mechudos="#fdf3df" numPicos={7} size={160} />
@@ -381,7 +445,7 @@ const confetti = [
     <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);margin:0 0 8px">Piñatas que ya volaron</h2>
     <p style="font-size:15px;line-height:1.5;color:var(--tinta-soft);max-width:580px;margin:0 auto 20px">Una selección de los pedidos recientes. Si quieres una igualita, dinos cuál y la replicamos.</p>
 
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+    <div id="galeria-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
       {galeria.map((g, i) => (
         <div class="gallery-card" data-index={i}
           style={`${g.tall ? 'grid-row:span 2;aspect-ratio:1/1.88;' : 'aspect-ratio:1;'}border-radius:${g.tall?'16':'14'}px;overflow:hidden;border:3px solid var(--tinta);box-shadow:${g.tall?'6px 6px':'5px 5px'} 0 var(--tinta);${g.tall ? 'background:repeating-linear-gradient(45deg,var(--crema) 0 12px,var(--crema-2) 12px 24px);' : 'background:var(--crema-2);'}display:flex;align-items:center;justify-content:center;cursor:pointer`}>
@@ -446,6 +510,54 @@ const confetti = [
   </div>
 </div>
 
+<!-- ── ESCUELAS Y MAYOREO ──────────────────────────── -->
+<section id="escuelas" style="padding:32px 0 36px;min-height:calc(100vh - 74px);background:var(--azul);color:var(--crema);display:flex;align-items:center">
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px;width:100%">
+    <div style="text-align:center;margin-bottom:24px">
+      <span style="display:inline-block;color:var(--amarillo);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:8px">✦ Pedidos por mayoreo ✦</span>
+      <h2 class="display" style="font-size:clamp(32px,4.5vw,52px);margin:0 0 10px;color:var(--crema)">Piñatas para escuelas y kermés</h2>
+      <p style="font-size:15px;line-height:1.5;color:rgba(253,243,223,.85);max-width:620px;margin:0 auto">¿Posada del salón, festival de fin de año o kermés? Hacemos piñatas dulceras económicas para pedidos grandes, o piñatas de exhibición si además las quieres bonitas antes del golpe.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      {escolares.map(e => (
+        <div style="background:var(--crema);color:var(--tinta);border-radius:20px;padding:24px;border:3px solid var(--tinta);box-shadow:8px 8px 0 rgba(42,26,16,.35)">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px">
+            <div style="width:76px;height:76px;flex-shrink:0;display:flex;align-items:center;justify-content:center">
+              <Pinata picos={e.pico} forrado={e.forr} mechudos={e.pico} numPicos={7} size={72} />
+            </div>
+            <div>
+              <span style="display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;background:var(--guinda);color:#fff;padding:3px 10px;border-radius:999px;margin-bottom:6px">{e.badge}</span>
+              <h3 class="display" style="font-size:20px;margin:0">{e.tipoLabel}</h3>
+            </div>
+          </div>
+          <p style="margin:0 0 12px;font-size:14px;color:var(--tinta-soft);line-height:1.5">{e.desc}</p>
+          <ul style="margin:0 0 16px;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px">
+            {e.bullets.map(b => (
+              <li style="font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px">
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--guinda);display:inline-block;flex-shrink:0"></span>
+                {b}
+              </li>
+            ))}
+          </ul>
+          <a href={`/catalogo?tipo=${e.tipoSlug}`} class="ver-modelos-btn"
+            style="display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--tinta);padding:9px 16px;border-radius:999px;font-weight:700;font-size:13px;text-decoration:none;border:2px solid var(--tinta);transition:background .12s">
+            Ver modelos {e.tipoSlug === 'dulcera' ? 'dulceros' : 'de exhibición'} →
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div style="text-align:center;margin-top:28px">
+      <a href="https://wa.me/525512345678?text=Hola%2C%20quiero%20cotizar%20pi%C3%B1atas%20para%20mi%20escuela%20o%20kerm%C3%A9s" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:10px;background:var(--amarillo);color:var(--tinta);padding:14px 24px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 6px 0 rgba(0,0,0,.15)">
+        Cotizar pedido para escuela →
+      </a>
+      <p style="font-size:12px;color:rgba(253,243,223,.7);margin-top:10px">Dinos cuántas piñatas necesitas y la fecha del evento — te damos precio por volumen.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ── PEDIDO ───────────────────────────────────────── -->
 <section id="pedido" style="padding:90px 0;background:var(--amarillo)">
   <div style="max-width:1200px;margin:0 auto;padding:0 48px">
@@ -454,12 +566,12 @@ const confetti = [
       <div>
         <span style="display:inline-block;color:var(--guinda);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;margin-bottom:14px">✦ Pídela ya ✦</span>
         <h2 class="display" style="font-size:clamp(40px,6vw,64px);margin:0 0 16px;color:var(--guinda-2)">Cotiza en<br/>5 minutos</h2>
-        <p style="font-size:18px;line-height:1.55;color:var(--tinta-soft);margin:0 0 32px">La forma más rápida es WhatsApp. Si prefieres llenar el formulario, también te contestamos.</p>
+        <p style="font-size:18px;line-height:1.55;color:var(--tinta-soft);margin:0 0 32px">Escríbenos por WhatsApp o correo. Si prefieres llenar el formulario, también te contestamos el mismo día.</p>
         <div style="display:flex;flex-direction:column;gap:20px">
           {[
             { icon:'📱', title:'WhatsApp', text:'+52 55 1234 5678 — Lun a Sáb, 9am–8pm' },
+            { icon:'✉️', title:'Correo', text:'hola@pinataslaestella.com' },
             { icon:'📍', title:'Taller', text:'Blvd. de las Flores 432, Rinconada San Felipe · 55719 San Francisco Coacalco, Edo. Méx.' },
-            { icon:'⏱', title:'Tiempo de entrega', text:'48 horas para chica y tradicional · 4–5 días para grande y jumbo' },
           ].map(r => (
             <div style="display:flex;gap:14px;align-items:flex-start">
               <div style="width:44px;height:44px;border-radius:12px;background:var(--guinda);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">{r.icon}</div>
@@ -472,28 +584,29 @@ const confetti = [
         </div>
       </div>
       <!-- Form -->
-      <form onsubmit="this.querySelector('.form-submit').textContent='¡Enviado! Te escribimos pronto ✓';return false"
+      <form id="cotiza-form"
         style="background:var(--crema);border-radius:24px;padding:32px;border:3px solid var(--tinta);box-shadow:10px 10px 0 var(--tinta)">
         <h3 class="serif" style="font-size:26px;margin:0 0 4px">Cuéntanos qué necesitas</h3>
         <p style="margin:0 0 20px;font-size:14px;color:var(--tinta-soft)">Te respondemos el mismo día.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
           <div>
             <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-soft);margin-bottom:6px">Nombre</label>
-            <input placeholder="Tu nombre" style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px" />
+            <input id="f-nombre" placeholder="Tu nombre" style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px" />
           </div>
           <div>
             <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-soft);margin-bottom:6px">Teléfono</label>
-            <input placeholder="55 0000 0000" style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px" />
+            <input id="f-tel" placeholder="55 0000 0000" style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px" />
           </div>
         </div>
         <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-soft);margin:14px 0 6px">Fecha del evento</label>
-        <input type="date" style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px" />
+        <input id="f-fecha" type="date" style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px" />
         <label style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--tinta-soft);margin:14px 0 6px">¿Qué piñata quieres?</label>
-        <textarea rows="3" placeholder="Ej: estrella de 7 picos tamaño tradicional, picos en metálico rojo, cuerpo en chino multicolor"
+        <textarea id="f-desc" rows="3" placeholder="Ej: estrella de 7 picos tamaño tradicional, picos en metálico rojo, cuerpo en chino multicolor"
           style="width:100%;padding:12px 14px;border:2px solid var(--tinta);border-radius:12px;background:#fff;font-family:inherit;font-size:15px;resize:vertical"></textarea>
-        <button type="submit" class="form-submit"
-          style="width:100%;background:var(--guinda);color:#fff;padding:14px;border-radius:14px;font-weight:700;font-size:16px;margin-top:18px;box-shadow:0 5px 0 var(--guinda-2);font-family:inherit">
-          Enviar pedido →
+        <button type="submit" id="form-submit-btn"
+          style="width:100%;background:var(--guinda);color:#fff;padding:14px;border-radius:14px;font-weight:700;font-size:16px;margin-top:18px;box-shadow:0 5px 0 var(--guinda-2);font-family:inherit;display:flex;align-items:center;justify-content:center;gap:8px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Enviar por correo →
         </button>
       </form>
     </div>
@@ -509,7 +622,7 @@ const confetti = [
     </div>
     <div>
       <h6 class="display" style="font-size:18px;margin:0 0 14px;color:var(--amarillo)">Catálogo</h6>
-      {['#catalogo·Por forma', '#tamanos·Por tamaño', '#materiales·Materiales', '#configurador·Arma tu piñata'].map(l => {
+      {['#catalogo·Por forma', '#tamanos·Por tamaño', '#materiales·Materiales', '#configurador·Arma tu piñata', '#escuelas·Escuelas y mayoreo'].map(l => {
         const [href, text] = l.split('·');
         return <div><a href={href} style="font-size:14px;color:rgba(253,243,223,.7);text-decoration:none;line-height:2;display:block">{text}</a></div>;
       })}
@@ -521,7 +634,7 @@ const confetti = [
       <a href="#pedido" style="font-size:14px;color:rgba(253,243,223,.7);text-decoration:none;line-height:2;display:block">Formulario</a>
     </div>
   </div>
-  <div style="border-top:1px dashed rgba(253,243,223,.2);margin-top:40px;padding:24px 48px 0;max-width:1200px;margin-left:auto;margin-right:auto;display:flex;justify-content:space-between;font-size:12px;color:rgba(253,243,223,.5)">
+  <div id="footer-bottom" style="border-top:1px dashed rgba(253,243,223,.2);margin-top:40px;padding:24px 48px 0;max-width:1200px;margin-left:auto;margin-right:auto;display:flex;justify-content:space-between;font-size:12px;color:rgba(253,243,223,.5)">
     <span>© 2026 Piñatas La Estrella · Coacalco, Edo. Méx.</span>
     <span>Hecho con papel, engrudo y mucho cariño 🇲🇽</span>
   </div>
@@ -536,6 +649,7 @@ const confetti = [
 
 <style>
   .pico-card:hover { transform: translate(-3px,-3px); box-shadow: 11px 11px 0 var(--tinta) !important; }
+  .ver-modelos-btn:hover { background: var(--amarillo) !important; }
   .opt-btn:hover:not(.active) { background: var(--amarillo) !important; }
   .opt-btn.active { background: var(--guinda) !important; color: #fff !important; border-color: var(--guinda) !important; }
   .gallery-card { transition: transform .15s, box-shadow .15s; }
@@ -544,17 +658,76 @@ const confetti = [
   #modal-svg-slot svg { animation: fadeUp .25s ease; }
   #modal-prev:hover, #modal-next:hover { background: var(--amarillo) !important; }
   #modal-close:hover { background: var(--guinda) !important; color: #fff; }
+  #nav-toggle:hover { background: var(--amarillo) !important; }
+  #nav-links.open { display: flex !important; }
   @media (max-width: 900px) {
-    nav ul { display: none; }
+    #nav-bar { padding-left: 20px !important; padding-right: 20px !important; }
+    #nav-links {
+      display: none !important;
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; gap: 2px; padding: 10px 20px 18px !important;
+      background: var(--crema); border-bottom: 2px dashed rgba(168,35,31,.25);
+      box-shadow: 0 8px 16px rgba(0,0,0,.08); font-size: 16px !important;
+    }
+    #nav-links li { border-top: 1px solid rgba(42,26,16,.08); }
+    #nav-links li a { display: block; padding: 13px 4px; }
+    #nav-toggle { display: flex !important; }
     section > div[style*="grid-template-columns:1.05fr"],
     section > div[style*="grid-template-columns:1fr 1fr"],
     section > div[style*="grid-template-columns:1fr 1.1fr"],
     section > div[style*="grid-template-columns:1.4fr"] { grid-template-columns: 1fr !important; }
     section > div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
+    #galeria-grid { grid-template-columns: repeat(2,1fr) !important; }
+    section[style*="padding:0 48px"],
+    div[style*="padding:0 48px"],
+    div[style*="padding:24px 48px 0"] { padding-left: 20px !important; padding-right: 20px !important; }
+    #footer-bottom { flex-direction: column !important; gap: 6px; text-align: center; padding-bottom: 76px !important; }
+  }
+  @media (max-width: 560px) {
+    #nav-cta-text { display: none; }
+    nav a[href^="mailto"] { padding: 11px !important; }
+    #tamanos-row { flex-wrap: wrap !important; justify-content: center !important; row-gap: 28px; }
+    #tamanos-row > div { flex: 0 1 30% !important; min-width: 96px !important; }
   }
 </style>
 
 <script>
+  // ── Menú móvil (hamburguesa) ───────────────────────────────────────
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks  = document.getElementById('nav-links');
+  const navIconOpen  = document.getElementById('nav-icon-open');
+  const navIconClose = document.getElementById('nav-icon-close');
+
+  function closeNavMenu() {
+    navLinks?.classList.remove('open');
+    navToggle?.setAttribute('aria-expanded', 'false');
+    if (navIconOpen)  navIconOpen.style.display  = '';
+    if (navIconClose) navIconClose.style.display = 'none';
+  }
+
+  navToggle?.addEventListener('click', () => {
+    const isOpen = navLinks?.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(!!isOpen));
+    if (navIconOpen)  navIconOpen.style.display  = isOpen ? 'none' : '';
+    if (navIconClose) navIconClose.style.display = isOpen ? '' : 'none';
+  });
+
+  navLinks?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNavMenu));
+
+  // ── Formulario cotización por correo ────────────────────────────────
+  document.getElementById('cotiza-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nombre = (document.getElementById('f-nombre') as HTMLInputElement).value.trim();
+    const tel    = (document.getElementById('f-tel')    as HTMLInputElement).value.trim();
+    const fecha  = (document.getElementById('f-fecha')  as HTMLInputElement).value;
+    const desc   = (document.getElementById('f-desc')   as HTMLTextAreaElement).value.trim();
+    const body   = `Hola, quiero cotizar una piñata:\n\nNombre: ${nombre || '—'}\nTeléfono: ${tel || '—'}\nFecha del evento: ${fecha || '—'}\n\n¿Qué piñata quiero?\n${desc || '—'}\n\n¿Me dan precio y disponibilidad?`;
+    window.location.href = `mailto:hola@pinataslaestella.com?subject=${encodeURIComponent('Cotización de piñata')}&body=${encodeURIComponent(body)}`;
+    const btn = document.getElementById('form-submit-btn')!;
+    btn.textContent = '¡Listo! Revisá tu app de correo ✓';
+    btn.style.background = 'var(--verde)';
+  });
+
   // ── Galería modal ────────────────────────────────────────────────────
   const galeriaData: { nombre: string; mat: string }[] = [
     { nombre: 'Estrella 7 picos · Guinda metálico',  mat: 'Picos metálicos · Cuerpo papelitos' },

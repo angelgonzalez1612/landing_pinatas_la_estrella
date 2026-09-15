@@ -5,28 +5,28 @@ import Pinata from '../components/Pinata.astro';
 const productos = [
   // ── 5 picos · disponibles en Mini → Grande ────────────────────────────
   {
-    n: 5, grupo: '5', tamanos: ['mini','chica','tradi','grande'], badge: 'Clásica · 5 picos',
+    n: 5, grupo: '5', tamanos: ['mini','chica','tradi','grande'], badge: 'Clásica · 5 picos', tipo: 'exhibicion',
     nombre: 'Guinda metálico',
     pico: '#a8231f', forrado: '#f4b81b', mechudos: '#a8231f', bg: '#fff7e0',
     mat: 'Picos metálicos · Cuerpo papelitos de china',
     desc: 'La silueta más clásica en rojo guinda brillante. Cinco picos largos y definidos, muy vistosa desde lejos.',
   },
   {
-    n: 5, grupo: '5', tamanos: ['mini','chica','tradi','grande'], badge: 'Clásica · 5 picos',
+    n: 5, grupo: '5', tamanos: ['mini','chica','tradi','grande'], badge: 'Clásica · 5 picos', tipo: 'dulcera',
     nombre: 'Verde crepé',
     pico: '#2f7a3a', forrado: '#f4b81b', mechudos: '#2f7a3a', bg: '#dcf0df',
     mat: 'Picos crepé · Cuerpo papel china',
     desc: 'Verde vibrante en acabado crepé texturizado. Ideal para fiestas con temática naturaleza o navidad.',
   },
   {
-    n: 5, grupo: '5', tamanos: ['mini','chica','tradi','grande'], badge: 'Clásica · 5 picos',
+    n: 5, grupo: '5', tamanos: ['mini','chica','tradi','grande'], badge: 'Clásica · 5 picos', tipo: 'exhibicion',
     nombre: 'Rosa mexicano',
     pico: '#e2357a', forrado: '#f4b81b', mechudos: '#e2357a', bg: '#ffe0ee',
     mat: 'Picos metálicos · Cuerpo papel chino',
     desc: 'Rosa mexicano intenso con acabado brillante en los picos. Perfecta para XV años y baby showers.',
   },
   {
-    n: 5, grupo: '5', tamanos: ['mini','chica','tradi','grande'], badge: 'Clásica · 5 picos',
+    n: 5, grupo: '5', tamanos: ['mini','chica','tradi','grande'], badge: 'Clásica · 5 picos', tipo: 'exhibicion',
     nombre: 'Azul metálico',
     pico: '#1f7aa8', forrado: '#f4b81b', mechudos: '#1f7aa8', bg: '#dceef5',
     mat: 'Picos metálicos · Cuerpo papelitos de china',
@@ -34,35 +34,35 @@ const productos = [
   },
   // ── 7 picos · disponibles en Chica → Jumbo ────────────────────────────
   {
-    n: 7, grupo: '7', tamanos: ['chica','tradi','grande','jumbo'], badge: 'La más pedida · 7 picos',
+    n: 7, grupo: '7', tamanos: ['chica','tradi','grande','jumbo'], badge: 'La más pedida · 7 picos', tipo: 'exhibicion',
     nombre: 'Guinda clásico',
     pico: '#a8231f', forrado: '#f4b81b', mechudos: '#a8231f', bg: '#fff7e0',
     mat: 'Picos metálicos · Cuerpo papelitos de china',
     desc: 'La tradicional mexicana en su versión más elegante. Siete picos que representan los pecados capitales.',
   },
   {
-    n: 7, grupo: '7', tamanos: ['chica','tradi','grande','jumbo'], badge: 'La más pedida · 7 picos',
+    n: 7, grupo: '7', tamanos: ['chica','tradi','grande','jumbo'], badge: 'La más pedida · 7 picos', tipo: 'dulcera',
     nombre: 'Verde y dorado',
     pico: '#2f7a3a', forrado: '#f4b81b', mechudos: '#f4b81b', bg: '#dcf0df',
     mat: 'Picos crepé · Cuerpo papel china',
     desc: 'Combinación de verde y dorado. La más tradicional de las posadas navideñas.',
   },
   {
-    n: 7, grupo: '7', tamanos: ['chica','tradi','grande','jumbo'], badge: 'La más pedida · 7 picos',
+    n: 7, grupo: '7', tamanos: ['chica','tradi','grande','jumbo'], badge: 'La más pedida · 7 picos', tipo: 'exhibicion',
     nombre: 'Rosa y dorado',
     pico: '#e2357a', forrado: '#f4b81b', mechudos: '#e2357a', bg: '#ffe0ee',
     mat: 'Picos metálicos · Cuerpo papel chino',
     desc: 'Rosa con detalles dorados. La más solicitada para quinceañeras y bodas de papel.',
   },
   {
-    n: 7, grupo: '7', tamanos: ['chica','tradi','grande','jumbo'], badge: 'La más pedida · 7 picos',
+    n: 7, grupo: '7', tamanos: ['chica','tradi','grande','jumbo'], badge: 'La más pedida · 7 picos', tipo: 'exhibicion',
     nombre: 'Azul y rosa',
     pico: '#1f7aa8', forrado: '#e2357a', mechudos: '#1f7aa8', bg: '#dceef5',
     mat: 'Picos metálicos · Cuerpo papelitos de china',
     desc: 'Contraste azul y rosa vibrante. La combinación más llamativa para fiestas mixtas.',
   },
   {
-    n: 7, grupo: '7', tamanos: ['chica','tradi','grande','jumbo'], badge: 'La más pedida · 7 picos',
+    n: 7, grupo: '7', tamanos: ['chica','tradi','grande','jumbo'], badge: 'La más pedida · 7 picos', tipo: 'exhibicion',
     nombre: 'Morado metálico',
     pico: '#6a2a8a', forrado: '#f4b81b', mechudos: '#6a2a8a', bg: '#ede0f5',
     mat: 'Picos metálicos · Cuerpo papel chino',
@@ -70,28 +70,28 @@ const productos = [
   },
   // ── 8 picos · disponibles en Tradicional → Jumbo ──────────────────────
   {
-    n: 8, grupo: '8', tamanos: ['tradi','grande','jumbo'], badge: 'Premium · 8 picos',
+    n: 8, grupo: '8', tamanos: ['tradi','grande','jumbo'], badge: 'Premium · 8 picos', tipo: 'exhibicion',
     nombre: 'Guinda premium',
     pico: '#a8231f', forrado: '#f4b81b', mechudos: '#a8231f', bg: '#fff7e0',
     mat: 'Picos metálicos · Cuerpo papelitos de china',
     desc: 'Ocho picos perfectamente simétricos en rojo guinda. La más imponente y dramática del catálogo.',
   },
   {
-    n: 8, grupo: '8', tamanos: ['tradi','grande','jumbo'], badge: 'Premium · 8 picos',
+    n: 8, grupo: '8', tamanos: ['tradi','grande','jumbo'], badge: 'Premium · 8 picos', tipo: 'dulcera',
     nombre: 'Verde crepé premium',
     pico: '#2f7a3a', forrado: '#f4b81b', mechudos: '#2f7a3a', bg: '#dcf0df',
     mat: 'Picos crepé · Cuerpo papel china',
     desc: 'Textura rica del crepé en ocho picos. Cada uno con su propio fleco en las puntas.',
   },
   {
-    n: 8, grupo: '8', tamanos: ['tradi','grande','jumbo'], badge: 'Premium · 8 picos',
+    n: 8, grupo: '8', tamanos: ['tradi','grande','jumbo'], badge: 'Premium · 8 picos', tipo: 'exhibicion',
     nombre: 'Rosa y azul',
     pico: '#e2357a', forrado: '#1f7aa8', mechudos: '#e2357a', bg: '#ffe0ee',
     mat: 'Picos metálicos · Cuerpo papel chino',
     desc: 'Contraste rosa con azul en el cuerpo. La combinación más audaz y festiva de la colección.',
   },
   {
-    n: 8, grupo: '8', tamanos: ['tradi','grande','jumbo'], badge: 'Premium · 8 picos',
+    n: 8, grupo: '8', tamanos: ['tradi','grande','jumbo'], badge: 'Premium · 8 picos', tipo: 'dulcera',
     nombre: 'Amarillo y guinda',
     pico: '#f4b81b', forrado: '#a8231f', mechudos: '#f4b81b', bg: '#fffde0',
     mat: 'Picos crepé · Cuerpo metálico',
@@ -108,8 +108,23 @@ const productos = [
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Catálogo completo de piñatas artesanales. Estrella de 5, 7 y 8 picos en metálico, crepé y papel china. Hecho a mano en Coacalco." />
-  <title>Catálogo · Piñatas La Estrella</title>
+  <meta name="description" content="Catálogo completo de piñatas artesanales hechas a mano en Coacalco. Estrella de 5, 7 y 8 picos en metálico, crepé y papel china, en 5 tamaños distintos." />
+  <title>Catálogo de piñatas artesanales · Piñatas La Estrella</title>
+  <link rel="canonical" href="https://landing-pinatas.vercel.app/catalogo" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Piñatas La Estrella" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:url" content="https://landing-pinatas.vercel.app/catalogo" />
+  <meta property="og:title" content="Catálogo de piñatas artesanales · Piñatas La Estrella" />
+  <meta property="og:description" content="Catálogo completo de piñatas artesanales hechas a mano en Coacalco. Estrella de 5, 7 y 8 picos en metálico, crepé y papel china." />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Catálogo de piñatas artesanales · Piñatas La Estrella" />
+  <meta name="twitter:description" content="Estrella de 5, 7 y 8 picos en metálico, crepé y papel china, en 5 tamaños distintos." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Caprasimo&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
@@ -121,7 +136,7 @@ const productos = [
 
 <!-- ── NAV ──────────────────────────────────────────── -->
 <nav style="position:fixed;top:0;left:0;width:100%;z-index:31;background:var(--crema);border-bottom:2px dashed rgba(168,35,31,.25);box-shadow:0 2px 12px rgba(0,0,0,.06)">
-  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;max-width:1200px;margin:0 auto">
+  <div id="nav-bar" style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;max-width:1200px;margin:0 auto">
     <a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none">
       <svg width="42" height="42" viewBox="-50 -50 100 100">
         <polygon points="0,-45 8,-8 45,0 8,8 0,45 -8,8 -45,0 -8,-8" fill="var(--guinda)"/>
@@ -132,17 +147,25 @@ const productos = [
         <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--guinda);font-weight:700;margin-top:2px">Taller artesanal · Est. 2001</div>
       </div>
     </a>
-    <ul style="display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:13px;font-weight:600">
-      <li><a href="/#catalogo" style="text-decoration:none">Catálogo</a></li>
+    <ul id="nav-links" style="display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:13px;font-weight:600">
+      <li><a href="/catalogo" style="text-decoration:none;color:var(--guinda);font-weight:800">Catálogo</a></li>
       <li><a href="/#tamanos" style="text-decoration:none">Tamaños</a></li>
       <li><a href="/#materiales" style="text-decoration:none">Materiales</a></li>
+      <li><a href="/#escuelas" style="text-decoration:none">Escuelas</a></li>
       <li><a href="/#pedido" style="text-decoration:none">Pedidos</a></li>
     </ul>
-    <a href="https://wa.me/525512345678?text=Hola%2C%20quiero%20cotizar%20una%20pi%C3%B1ata" target="_blank" rel="noopener"
-      style="background:#25d366;color:#fff;padding:11px 18px;border-radius:999px;font-weight:700;display:inline-flex;align-items:center;gap:8px;font-size:14px;text-decoration:none">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24zm6.54-3.87c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-      WhatsApp
-    </a>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="mailto:hola@pinataslaestella.com?subject=Cotización%20de%20piñata&body=Hola%2C%20quiero%20cotizar%20una%20piñata.%20¿Me%20pueden%20dar%20precio%20y%20disponibilidad%3F"
+        style="background:var(--guinda);color:#fff;padding:11px 18px;border-radius:999px;font-weight:700;display:inline-flex;align-items:center;gap:8px;font-size:14px;text-decoration:none">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span id="nav-cta-text">Cotizar</span>
+      </a>
+      <button id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"
+        style="display:none;width:40px;height:40px;flex-shrink:0;border:2px solid var(--tinta);border-radius:10px;background:#fff;align-items:center;justify-content:center;cursor:pointer">
+        <svg id="nav-icon-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="nav-icon-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -183,6 +206,20 @@ const productos = [
     ))}
     <!-- Separador -->
     <div style="width:1px;height:22px;background:rgba(42,26,16,.18);margin:0 4px"></div>
+    <!-- Filtro tipo -->
+    <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--tinta-soft)">Tipo:</span>
+    {[
+      { val: 'todos',      label: 'Todas' },
+      { val: 'dulcera',    label: 'Dulcera' },
+      { val: 'exhibicion', label: 'Exhibición' },
+    ].map((f, i) => (
+      <button class={`filter-btn filter-tipo${i === 0 ? ' active' : ''}`} data-filter={f.val}
+        style={`padding:6px 14px;border:2px solid var(--tinta);border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;transition:all .12s;background:${i===0?'var(--azul)':'#fff'};color:${i===0?'#fff':'inherit'}`}>
+        {f.label}
+      </button>
+    ))}
+    <!-- Separador -->
+    <div style="width:1px;height:22px;background:rgba(42,26,16,.18);margin:0 4px"></div>
     <!-- Filtro tamaño -->
     <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--tinta-soft)">Tamaño:</span>
     {[
@@ -207,7 +244,7 @@ const productos = [
   <div style="max-width:1200px;margin:0 auto;padding:0 48px">
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px" id="catalog-grid">
       {productos.map((p, i) => (
-        <div class="prod-card" data-grupo={p.grupo} data-tamanos={p.tamanos.join(' ')} data-index={i}
+        <div class="prod-card" data-grupo={p.grupo} data-tamanos={p.tamanos.join(' ')} data-tipo={p.tipo} data-index={i}
           style={`background:${p.bg};border-radius:20px;border:3px solid var(--tinta);box-shadow:6px 6px 0 var(--tinta);overflow:hidden;display:flex;flex-direction:column;cursor:pointer`}>
           <!-- Imagen -->
           <div style="padding:28px 24px 16px;display:flex;justify-content:center;align-items:center">
@@ -215,9 +252,14 @@ const productos = [
           </div>
           <!-- Info -->
           <div style="padding:0 20px 20px;flex:1;display:flex;flex-direction:column">
-            <span style="display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;background:var(--tinta);color:var(--crema);padding:3px 10px;border-radius:999px;margin-bottom:10px;align-self:flex-start">
-              {p.badge}
-            </span>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+              <span style="display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;background:var(--tinta);color:var(--crema);padding:3px 10px;border-radius:999px;align-self:flex-start">
+                {p.badge}
+              </span>
+              <span style={`display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;background:${p.tipo === 'dulcera' ? 'var(--azul)' : 'var(--amarillo)'};color:${p.tipo === 'dulcera' ? '#fff' : 'var(--tinta)'};padding:3px 10px;border-radius:999px;align-self:flex-start`}>
+                {p.tipo === 'dulcera' ? 'Dulcera' : 'Exhibición'}
+              </span>
+            </div>
             <h3 class="display" style="font-size:22px;margin:0 0 8px">{p.nombre}</h3>
             <p style="font-size:13px;color:var(--tinta-soft);margin:0 0 12px;line-height:1.5;flex:1">{p.desc}</p>
             <div style="display:flex;align-items:center;gap:6px;margin-bottom:14px">
@@ -308,7 +350,7 @@ const productos = [
       <a href="/#pedido" style="font-size:14px;color:rgba(253,243,223,.7);text-decoration:none;line-height:2;display:block">Formulario</a>
     </div>
   </div>
-  <div style="border-top:1px dashed rgba(253,243,223,.2);margin-top:40px;padding:24px 48px 0;max-width:1200px;margin-left:auto;margin-right:auto;display:flex;justify-content:space-between;font-size:12px;color:rgba(253,243,223,.5)">
+  <div id="footer-bottom" style="border-top:1px dashed rgba(253,243,223,.2);margin-top:40px;padding:24px 48px 0;max-width:1200px;margin-left:auto;margin-right:auto;display:flex;justify-content:space-between;font-size:12px;color:rgba(253,243,223,.5)">
     <span>© 2026 Piñatas La Estrella · Coacalco, Edo. Méx.</span>
     <span>Hecho con papel, engrudo y mucho cariño 🇲🇽</span>
   </div>
@@ -331,21 +373,61 @@ const productos = [
   #cat-svg-slot svg { animation: fadeUp .22s ease; }
   #cat-prev:hover, #cat-next:hover { background: var(--amarillo) !important; }
   #cat-close:hover { background: var(--guinda) !important; color: #fff; }
+  #nav-toggle:hover { background: var(--amarillo) !important; }
+  #nav-links.open { display: flex !important; }
   @media (max-width: 900px) {
-    nav ul { display: none; }
+    #nav-bar { padding-left: 20px !important; padding-right: 20px !important; }
+    #nav-links {
+      display: none !important;
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; gap: 2px; padding: 10px 20px 18px !important;
+      background: var(--crema); border-bottom: 2px dashed rgba(168,35,31,.25);
+      box-shadow: 0 8px 16px rgba(0,0,0,.08); font-size: 16px !important;
+    }
+    #nav-links li { border-top: 1px solid rgba(42,26,16,.08); }
+    #nav-links li a { display: block; padding: 13px 4px; }
+    #nav-toggle { display: flex !important; }
     #catalog-grid { grid-template-columns: 1fr 1fr !important; }
+    section[style*="padding:0 48px"],
+    div[style*="padding:0 48px"] { padding-left: 20px !important; padding-right: 20px !important; }
+    #footer-bottom { flex-direction: column !important; gap: 6px; text-align: center; padding-bottom: 76px !important; }
   }
   @media (max-width: 600px) {
     #catalog-grid { grid-template-columns: 1fr !important; }
   }
+  @media (max-width: 560px) {
+    #nav-cta-text { display: none; }
+    nav a[href^="mailto"] { padding: 11px !important; }
+  }
 </style>
 
 <script>
+  // ── Menú móvil (hamburguesa) ───────────────────────────────────────
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks  = document.getElementById('nav-links');
+  const navIconOpen  = document.getElementById('nav-icon-open');
+  const navIconClose = document.getElementById('nav-icon-close');
+
+  navToggle?.addEventListener('click', () => {
+    const isOpen = navLinks?.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(!!isOpen));
+    if (navIconOpen)  navIconOpen.style.display  = isOpen ? 'none' : '';
+    if (navIconClose) navIconClose.style.display = isOpen ? '' : 'none';
+  });
+
+  navLinks?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle?.setAttribute('aria-expanded', 'false');
+    if (navIconOpen)  navIconOpen.style.display  = '';
+    if (navIconClose) navIconClose.style.display = 'none';
+  }));
+
   const cards      = document.querySelectorAll<HTMLElement>('.prod-card');
   const countLabel = document.getElementById('count-label');
 
   let activePicos  = 'todas';
   let activeTamano = 'todos';
+  let activeTipo   = 'todos';
 
   // ── Filtros ──────────────────────────────────────────────────────────
   function applyFilters() {
@@ -354,10 +436,20 @@ const productos = [
       const grupoOk  = activePicos  === 'todas' || card.dataset.grupo === activePicos;
       const tamanos  = (card.dataset.tamanos ?? '').split(' ');
       const tamanoOk = activeTamano === 'todos' || tamanos.includes(activeTamano);
-      if (grupoOk && tamanoOk) { card.removeAttribute('hidden'); visible++; }
+      const tipoOk   = activeTipo   === 'todos' || card.dataset.tipo === activeTipo;
+      if (grupoOk && tamanoOk && tipoOk) { card.removeAttribute('hidden'); visible++; }
       else card.setAttribute('hidden', '');
     });
     if (countLabel) countLabel.textContent = `${visible} piñata${visible !== 1 ? 's' : ''}`;
+  }
+
+  function setActiveButton(selector: string, val: string, activeBg: string) {
+    document.querySelectorAll<HTMLElement>(selector).forEach(b => {
+      const isActive = b.dataset.filter === val;
+      b.classList.toggle('active', isActive);
+      b.style.background = isActive ? activeBg : '#fff';
+      b.style.color = isActive ? '#fff' : 'inherit';
+    });
   }
 
   document.querySelectorAll<HTMLButtonElement>('.filter-picos').forEach(btn => {
@@ -383,6 +475,24 @@ const productos = [
       closeModal();
     });
   });
+
+  document.querySelectorAll<HTMLButtonElement>('.filter-tipo').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeTipo = btn.dataset.filter ?? 'todos';
+      setActiveButton('.filter-tipo', activeTipo, 'var(--azul)');
+      applyFilters();
+      closeModal();
+    });
+  });
+
+  // ── Preseleccionar filtro desde la URL (ej. /catalogo?tipo=dulcera) ───
+  const params = new URLSearchParams(window.location.search);
+  const tipoParam = params.get('tipo');
+  if (tipoParam === 'dulcera' || tipoParam === 'exhibicion') {
+    activeTipo = tipoParam;
+    setActiveButton('.filter-tipo', activeTipo, 'var(--azul)');
+  }
+  applyFilters();
 
   // ── Modal ────────────────────────────────────────────────────────────
   const modal     = document.getElementById('cat-modal')!;
