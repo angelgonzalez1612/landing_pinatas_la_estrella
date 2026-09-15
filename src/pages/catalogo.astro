@@ -331,7 +331,7 @@ const productos = [
 
 <!-- ── FOOTER ─────────────────────────────────────────── -->
 <footer style="background:var(--tinta);color:var(--crema);padding:60px 0 30px">
-  <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:0 48px;max-width:1200px;margin:0 auto">
+  <div id="footer-grid" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:0 48px;max-width:1200px;margin:0 auto">
     <div>
       <h6 class="display" style="font-size:22px;margin:0 0 14px;color:var(--amarillo)">Piñatas La Estrella</h6>
       <p style="font-size:14px;color:rgba(253,243,223,.7);line-height:1.7;margin:0">Taller familiar en San Francisco Coacalco. Tres generaciones armando piñatas de papel, una estrella a la vez.</p>
@@ -388,6 +388,7 @@ const productos = [
     #nav-links li a { display: block; padding: 13px 4px; }
     #nav-toggle { display: flex !important; }
     #catalog-grid { grid-template-columns: 1fr 1fr !important; }
+    #footer-grid { grid-template-columns: 1fr !important; }
     section[style*="padding:0 48px"],
     div[style*="padding:0 48px"] { padding-left: 20px !important; padding-right: 20px !important; }
     #footer-bottom { flex-direction: column !important; gap: 6px; text-align: center; padding-bottom: 76px !important; }
